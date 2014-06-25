@@ -21,6 +21,17 @@ edge - show the edge of logs with conditional grep
     -gv  --grepv      invert grep condition
     -f   --file       file path
 
+=head2 EXAMPLES
+
+    $ edge -g foo access.log
+
+The above command is mostly same as below commands.
+
+    $ cat access.log | grep foo | head -n1
+    $ cat access.log | grep foo | tail -n1
+    $ cat access.log | grep foo | wc -l
+
+
 =head1 AUTHOR
 
 Dai Okabayashi E<lt>bayashi@cpan.orgE<gt>

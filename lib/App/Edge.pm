@@ -3,7 +3,7 @@ use strict;
 use warnings;
 use Getopt::Long qw/GetOptionsFromArray/;
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 sub run {
     my $self = shift;
@@ -105,6 +105,13 @@ sub _merge_opt {
     defined $config->{grepv} or $config->{grepv} = [];
 
     push(@{$config->{file}}, $_) for @argv;
+}
+
+sub _show_usage {
+    my $exitval = shift;
+
+    require Pod::Usage;
+    Pod::Usage::pod2usage($exitval);
 }
 
 1;

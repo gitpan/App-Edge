@@ -28,6 +28,7 @@
       "runtime" : {
          "requires" : {
             "Getopt::Long" : "0",
+            "Pod::Usage" : "0",
             "perl" : "5.008001"
          }
       }
@@ -35,7 +36,7 @@
    "provides" : {
       "App::Edge" : {
          "file" : "lib/App/Edge.pm",
-         "version" : "0.01"
+         "version" : "0.02"
       }
    },
    "release_status" : "stable",
@@ -50,5 +51,5 @@
          "url" : "http://github.com/bayashi/App-Edge"
       }
    },
-   "version" : "0.01"
+   "version" : "0.02"
 }
