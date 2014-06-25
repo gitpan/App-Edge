@@ -1,0 +1,37 @@
+#!perl
+use strict;
+use warnings;
+use App::Edge;
+
+my $edge = App::Edge->run(@ARGV);
+
+__END__
+
+=head1 NAME
+
+edge - show the edge of logs with conditional grep
+
+=head1 SYNOPSIS
+
+    $ edge [options] FILE_PATH
+
+=head2 OPTIONS
+
+    -g   --grep       grep condition
+    -gv  --grepv      invert grep condition
+    -f   --file       file path
+
+=head1 AUTHOR
+
+Dai Okabayashi E<lt>bayashi@cpan.orgE<gt>
+
+=head1 SEE ALSO
+
+L<App::Edge>
+
+=head1 LICENSE
+
+This module is free software; you can redistribute it and/or
+modify it under the same terms as Perl itself. See L<perlartistic>.
+
+=cut
