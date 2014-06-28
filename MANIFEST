@@ -13,6 +13,7 @@ share/log4
 share/log5
 t/00_compile.t
 t/01_basic.t
+t/02_total-count.t
 xt/01_perlcritic.t
 xt/02_pod-coverage.t
 xt/03_pod.t

@@ -3,7 +3,7 @@ use strict;
 use warnings;
 use Getopt::Long qw/GetOptionsFromArray/;
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 sub run {
     my $self = shift;
@@ -33,15 +33,17 @@ sub _main {
 sub _show_file {
     my ($file, $config) = @_;
 
-    open my $fh, '<', $file or die "cannot open '$file' for reading";
-
     my $c = 0;
+    my $total = 0;
     my $last_line = '';
     my @grep  = @{$config->{grep}};
     my @grepv = @{$config->{grepv}};
 
+    open my $fh, '<', $file or die "cannot open '$file' for reading";
+
     while ( my $line = <$fh> ) {
         chomp $line;
+        $total++;
         next if @grepv &&  _match_grepv($line, @grepv);
         next if @grep  && !_match_grep($line, @grep);
         $c++;
@@ -53,9 +55,14 @@ sub _show_file {
         }
     }
 
+    close $fh;
+
     print "$c: $last_line\n" if $last_line;
 
-    close $fh;
+    if ($config->{total}) {
+        my $plural = $total > 1 ? 's' : '';
+        print "total: $total line". $plural. "\n";
+    }
 }
 
 sub _match_grep {
@@ -88,11 +95,12 @@ sub _merge_opt {
 
     GetOptionsFromArray(
         \@argv,
-        'g|grep=s@'   => \$config->{grep},
-        'gv|grepv=s@' => \$config->{grepv},
+        't|total-count' => \$config->{total},
+        'g|grep=s@'     => \$config->{grep},
+        'gv|grepv=s@'   => \$config->{grepv},
 #        'n|line=i'    => \$config->{n},
-        'f|file=s@'   => \$config->{file},
-        'h|help'      => sub {
+        'f|file=s@'     => \$config->{file},
+        'h|help'        => sub {
             _show_usage(1);
         },
         'v|version'   => sub {

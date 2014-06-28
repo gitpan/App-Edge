@@ -17,7 +17,7 @@ my $builder = Module::Build->new(
     },
     requires => {
         'perl' => '5.008001',
-        'Getopt::Long' => 0,
+        'Getopt::Long' => 2.42,
         'Pod::Usage' => 0,
     },
     script_files        => [ 'script/edge' ],

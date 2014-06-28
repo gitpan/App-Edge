@@ -7,7 +7,7 @@ if ($@) {
 }
 else {
     Test::Perl::Metrics::Lite->import(
-        -mccabe_complexity => 15,
+        -mccabe_complexity => 18,
         -loc => 65,
         -except_dir  => [
         ],
